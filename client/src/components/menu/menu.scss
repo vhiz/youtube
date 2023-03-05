@@ -1,0 +1,72 @@
+@import "../../app.scss";
+.menu {
+  @include themify($themes) {
+    flex: 1;
+    background-color: themed("bgSoft");
+    color: themed("textColorSoft");
+    font-size: 15px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    border-right:0.5px solid themed('border') ;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    .menuWrapper {
+      padding: 18px 26px;
+      height: 70%;
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: bold;
+        margin-bottom: 25px;
+
+        img {
+          height: 25px;
+        }
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+        padding: 7.5px 0;
+
+        img {
+          height: 15px;
+        }
+
+        &:hover {
+          background-color: themed("bg");
+          transition: ease 1s;
+        }
+      }
+
+      .loginMenu {
+      
+        button {
+          padding: 5px 15px;
+          background-color: transparent;
+          border: 1px solid blue;
+          cursor: pointer;
+          color: blue;
+          border-radius: 3px;
+          font-weight: 500;
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+      }
+
+      hr {
+        margin: 15px 0;
+        border: 0.5px solid themed("border");
+      }
+    }
+  }
+}

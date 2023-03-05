@@ -1,0 +1,121 @@
+@import "../../app.scss";
+
+.video {
+  display: flex;
+  @include themify($themes) {
+    .vContanier {
+      background-color: themed("bg");
+      flex: 7;
+
+      .videoWrapper {
+        display: flex;
+        gap: 24px;
+        padding: 20px;
+
+        .content {
+          flex: 5;
+          border-radius: 5px;
+
+          .contentWrapper {
+
+            video{
+              max-height: 600px;
+              width: 100%;
+              object-fit: contain;
+            }
+            h1 {
+              font-size: 18px;
+              font-weight: 400;
+              margin-top: 20px;
+              margin-bottom: 10px;
+              color: themed("textColor");
+              margin-left: 5px;
+            }
+            .details {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              span {
+                color: themed("textColorSoft");
+                margin-left: 5px;
+              }
+              .buttons {
+                display: flex;
+                gap: 20px;
+                color: themed("textColor");
+
+                .button {
+                  display: flex;
+                  align-items: center;
+                  cursor: pointer;
+                  gap: 3px;
+                  font-size: 15px;
+                }
+              }
+            }
+
+            hr {
+              margin: 15px 0;
+              border: 0.5px solid themed("border");
+            }
+
+            .channel {
+              display: flex;
+              justify-content: space-between;
+
+              .channelInfo {
+                display: flex;
+                gap: 20px;
+
+                img {
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                }
+
+                .channelDetail {
+                  display: flex;
+                  flex-direction: column;
+                  color: themed("textColor");
+
+                  .name {
+                    font-weight: 500;
+                  }
+
+                  .counter {
+                    margin-top: 5px;
+                    margin-bottom: 20px;
+                    color: themed("textColorSoft");
+                    font-size: 12px;
+                  }
+
+                  p{
+                    font-size: 14px;
+                  }
+                }
+              }
+
+              button{
+                border: none;
+                outline: none;
+                background-color: red;
+                color: white;
+                font-weight: 500;
+                cursor: pointer;
+                border-radius: 5px;
+                height: max-content;
+                padding: 10px 20px ;
+              }
+            }
+          }
+        }
+
+        .recommendation {
+          flex: 2;
+        }
+      }
+    }
+  }
+}

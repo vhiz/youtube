@@ -1,0 +1,31 @@
+@import "../../app.scss";
+.comments {
+  @include themify($themes) {
+    .newComment {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid themed("border");
+        background-color: transparent;
+        padding: 5px;
+        color: themed("textColor");
+        width: 100%;
+      }
+
+      .send {
+        color: themed("textColor");
+        cursor: pointer;
+      }
+    }
+  }
+}

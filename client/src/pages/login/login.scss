@@ -1,0 +1,75 @@
+@import "../../app.scss";
+.login {
+  display: flex;
+  @include themify($themes) {
+    .loginContainer {
+      background-color: themed("bg");
+      flex: 7;
+
+      .loginWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 56px);
+        color: themed("textColor");
+
+        .siginWarpper {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          background-color: themed("bgSoft");
+          padding: 20px 50px;
+          border: 1px solid themed("border");
+          gap: 10px;
+          border-radius: 5px;
+
+          h1 {
+            font-size: 24px;
+          }
+
+          h2 {
+            font-size: 18px;
+            font-weight: 300;
+          }
+
+          input {
+            border: none;
+            outline: none;
+            border-radius: 3px;
+            padding: 10px;
+            background-color: transparent;
+            color: themed("textColor");
+            border-bottom: 1px solid themed("border");
+            width: 100%;
+          }
+
+          button {
+            border: none;
+            outline: none;
+            background-color: themed("bg");
+            color: themed("textColorSoft");
+            border-radius: 3px;
+            padding: 10px 20px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+        }
+
+        .more {
+          display: flex;
+          font-size: 12px;
+          margin-top: 10px;
+          color: themed("textColorSoft");
+          .links {
+            margin-left: 50px;
+
+            span {
+              margin-left: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
