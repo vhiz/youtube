@@ -23,8 +23,8 @@ router.put("/sub/:id", subscribe);
 
 router.put("/unsub/:id", unsubscribe);
 
-router.put("/like/:videoId", like);
+router.put("/like/:videoId/:id", like);
 
-router.put("/dislike/:videoId", dislike);
+router.put("/dislike/:videoId/:id", dislike);
 
 module.exports = router;

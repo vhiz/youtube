@@ -6,7 +6,7 @@ const {
 
 const router = require("express").Router();
 
-router.post("/", addComment);
+router.post("/:id", addComment);
 
 router.get("/:videoId", getAllComments);
 

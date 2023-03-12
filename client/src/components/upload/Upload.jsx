@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { makeRequest } from "../../axios";
 import "./upload.scss";
 
@@ -10,6 +10,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
+import { AuthContext } from "../../context/authCOntext";
 
 export default function Upload({ setOpen }) {
   const [img, setImg] = useState("");
@@ -19,6 +20,7 @@ export default function Upload({ setOpen }) {
   const [tags, setTags] = useState([]);
   const [info, setInfo] = useState({});
   const queryClient = new useQueryClient();
+  const {currentUser} = useContext(AuthContext)
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -72,7 +74,7 @@ export default function Upload({ setOpen }) {
   }, [img]);
   const mutation = useMutation(
     (newVideo) => {
-      return makeRequest.post(`/videos`, newVideo);
+      return makeRequest.post(`/videos/${currentUser._id}`, newVideo);
     },
     {
       onSuccess: () => {

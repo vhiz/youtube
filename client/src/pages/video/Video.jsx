@@ -53,7 +53,7 @@ export default function Video() {
 
   const mutationLike = useMutation(
     () => {
-      return makeRequest.put(`/users/like/${path}`);
+      return makeRequest.put(`/users/like/${path}/${currentUser._id}`);
     },
     {
       onSuccess: () => {
@@ -65,7 +65,7 @@ export default function Video() {
 
   const mutationUnlike = useMutation(
     () => {
-      return makeRequest.put(`/users/dislike/${path}`);
+      return makeRequest.put(`/users/dislike/${path}/${currentUser._id}`);
     },
     {
       onSuccess: () => {

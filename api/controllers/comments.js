@@ -4,19 +4,19 @@ const { Video } = require("../model/Video");
 require("dotenv/config");
 
 const addComment = async (req, res) => {
-  const token = req.cookies.youtubeToken;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.youtubeToken;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
-    const userId = payload.id;
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
+    const userId = req.params.id;
     try {
       const newComment = await Comment.create({ ...req.body, userId: userId });
       res.status(201).json(newComment);
     } catch (error) {
       res.status(400).json(error.message);
     }
-  });
+  // });
 };
 
 const getAllComments = async (req, res) => {

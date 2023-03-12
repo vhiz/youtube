@@ -13,7 +13,7 @@ const {
 
 const router = require("express").Router();
 
-router.post("/", addVideo);
+router.post("/:id", addVideo);
 
 router.delete("/:id", deleteVideo);
 
@@ -27,7 +27,7 @@ router.get("/trend", trends);
 
 router.get("/random", random);
 
-router.get("/sub", subscribed);
+router.get("/sub/:id", subscribed);
 
 router.get("/tags", getByTag);
 

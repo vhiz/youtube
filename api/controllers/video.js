@@ -3,12 +3,12 @@ const { User } = require("../model/User");
 const { Video } = require("../model/Video");
 
 const addVideo = async (req, res) => {
-  const token = req.cookies.youtubeToken;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.youtubeToken;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
-    const userId = payload.id;
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
+    const userId = req.params.id;
 
     try {
       const newVideo = await Video.create({
@@ -20,30 +20,30 @@ const addVideo = async (req, res) => {
     } catch (error) {
       res.status(400).json(error);
     }
-  });
+  // });
 };
 
 const deleteVideo = async (req, res) => {
-  const token = req.cookies.youtubeToken;
-  if (!token) return res.status(401).json("Not Authenticated");
+  // const token = req.cookies.youtubeToken;
+  // if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
-    const userId = payload.id;
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
+  //   const userId = payload.id;
 
     const video = await Video.findById(req.params.id);
     try {
-      if (userId === video.userId) {
+      // if (userId === video.userId) {
         await video.deleteOne();
 
         res.status(200).json("deleted video");
-      } else {
-        return res.status(403).json("you can update only your video");
-      }
+      // } else {
+      //   return res.status(403).json("you can update only your video");
+      // }
     } catch (error) {
       res.status(400).json(error);
     }
-  });
+  // });
 };
 
 const getVideo = async (req, res) => {
@@ -59,13 +59,13 @@ const updateVideo = async (req, res) => {
   const token = req.cookies.youtubeToken;
   if (!token) return res.status(401).json("Not Authenticated");
 
-  verify(token, process.env.KEY, async (err, payload) => {
-    if (err) return res.status(403).json("Token Not Valid");
-    const userId = payload.id;
+  // verify(token, process.env.KEY, async (err, payload) => {
+  //   if (err) return res.status(403).json("Token Not Valid");
+  //   const userId = payload.id;
 
     const video = await Video.findById(req.params.id);
     try {
-      if (userId === video.userId) {
+      // if (userId === video.userId) {
         const updatedVideo = await video.updateOne(
           {
             $set: req.body,
@@ -74,13 +74,13 @@ const updateVideo = async (req, res) => {
         );
 
         res.status(200).json(updateVideo);
-      } else {
-        return res.status(403).json("you can update only your video");
-      }
+      // } else {
+      //   return res.status(403).json("you can update only your video");
+      // }
     } catch (error) {
       res.status(400).json(error);
     }
-  });
+  // });
 };
 
 const addView = async (req, res) => {
@@ -106,12 +106,12 @@ const random = async (req, res) => {
 
 const subscribed = async (req, res) => {
   try {
-    const token = req.cookies.youtubeToken;
-    if (!token) return res.status(401).json("Not Authenticated");
+    // const token = req.cookies.youtubeToken;
+    // if (!token) return res.status(401).json("Not Authenticated");
 
-    verify(token, process.env.KEY, async (err, payload) => {
-      if (err) return res.status(403).json("Token Not Valid");
-      const userId = payload.id;
+    // verify(token, process.env.KEY, async (err, payload) => {
+    //   if (err) return res.status(403).json("Token Not Valid");
+      const userId = req.params.id;
 
       const user = await User.findById(userId);
       const subcribedChannels = user.subscribedUsers;
@@ -123,7 +123,7 @@ const subscribed = async (req, res) => {
       res
         .status(200)
         .json(list.flat().sort((a, b) => b.createdAt - a.createdAt));
-    });
+    // });
   } catch (error) {
     res.status(400).json(error.message);
   }

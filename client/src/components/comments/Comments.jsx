@@ -33,7 +33,7 @@ export default function Comments({ videoId }) {
 
   const mutation = useMutation(
     (inputs) => {
-      return makeRequest.post(`/comment`, inputs);
+      return makeRequest.post(`/comment/${currentUser._id}`, inputs);
     },
     {
       onSuccess: () => {
